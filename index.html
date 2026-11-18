@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shiwali Saraswat | Backend Engineer (PHP / Laravel)</title>
+<meta name="description" content="Backend engineer with 6+ years building production Laravel systems, payment integrations and APIs.">
+<meta name="theme-color" content="#0d1220">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1220; --panel:#141a2c; --line:#242d47; --text:#e8eaf3; --muted:#98a1bd;
+  --accent:#9aa8ff; --ok:#5fd39a; --key:#9aa8ff; --str:#f0b89a; --num:#7fd6e8;
+  --sans:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;font-size:17px;
+  background-image:radial-gradient(900px 500px at 85% -10%,rgba(154,168,255,.12),transparent 60%)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:5;background:rgba(13,18,32,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+nav b{font-weight:800;letter-spacing:-.01em}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:.95rem;color:var(--muted)}
+nav a{text-decoration:none}nav a:hover{color:var(--text)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:84px 0 72px}
+h1{font-size:clamp(2.4rem,5.4vw,4rem);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin:0 0 20px}
+.lead{color:var(--muted);max-width:46ch;margin:0 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{padding:11px 20px;border-radius:10px;text-decoration:none;font-weight:600;border:1px solid var(--line)}
+.btn.main{background:var(--accent);color:#0d1220;border-color:var(--accent)}
+.btn:hover{transform:translateY(-1px)}
+.status{display:inline-flex;gap:8px;align-items:center;font-size:.9rem;color:var(--muted);margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+
+/* api panel */
+.api{background:var(--panel);border:1px solid var(--line);border-radius:14px;font-family:var(--mono);font-size:.82rem;line-height:1.75;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.bar{display:flex;gap:10px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--line);color:var(--muted)}
+.bar .get{color:var(--ok);font-weight:500}
+.api pre{margin:0;padding:16px 18px;overflow-x:auto;white-space:pre}
+.hd{color:var(--muted)}.ok{color:var(--ok)}.k{color:var(--key)}.s{color:var(--str)}.n{color:var(--num)}
+.api a{color:var(--str);text-underline-offset:3px}
+.js .ln{opacity:0;transform:translateY(4px);transition:opacity .25s,transform .25s;display:block}
+.js .ln.on{opacity:1;transform:none}
+
+/* sections */
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-size:1.9rem;letter-spacing:-.02em;margin:0 0 32px;font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:0}
+.stats div{padding:4px 22px;border-left:1px solid var(--line)}
+.stats div:first-child{border-left:0;padding-left:0}
+.stats dt{font-size:1.9rem;font-weight:800;letter-spacing:-.03em}
+.stats dd{margin:2px 0 0;color:var(--muted);font-size:.9rem}
+
+.proj{display:grid;grid-template-columns:1fr auto;gap:8px 24px;padding:26px 0;border-bottom:1px solid var(--line)}
+.proj:first-of-type{padding-top:0}
+.proj h3{margin:0;font-size:1.3rem;letter-spacing:-.01em}
+.chip{font-family:var(--mono);font-size:.72rem;border:1px solid var(--line);border-radius:99px;padding:2px 10px;margin-left:10px;vertical-align:middle;color:var(--muted)}
+.chip.live{color:var(--ok);border-color:rgba(95,211,154,.4)}
+.proj p{margin:0;color:var(--muted);max-width:62ch}
+.proj .stack{font-family:var(--mono);font-size:.78rem;color:var(--accent);grid-column:1}
+.proj .go{grid-column:2;grid-row:1/3;align-self:center;text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:8px 16px;font-size:.92rem}
+.proj .go:hover{border-color:var(--accent);color:var(--accent)}
+
+.tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.tl li{position:relative;padding-bottom:30px}
+.tl li::before{content:"";position:absolute;left:-29px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.tl b{font-size:1.1rem}.tl span{display:block;color:var(--muted);font-size:.92rem}
+.tl p{margin:6px 0 0;color:var(--muted);max-width:62ch}
+
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.skills h3{font-size:1rem;margin:0 0 10px;color:var(--accent)}
+.skills p{margin:0;color:var(--muted)}
+
+.contact{text-align:left}
+.contact a.big{font-size:clamp(1.4rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:8px}
+.contact a.big:hover{text-decoration-color:var(--accent)}
+footer{padding:28px 0 48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
+
+/* ---- gradient layer ---- */
+:root{--bg:#0a0e1c;--panel:#10162a;--g1:#6366f1;--g2:#a855f7;--g3:#ec4899;--g4:#22d3ee;
+  --grad:linear-gradient(120deg,var(--g4),var(--g1) 40%,var(--g2) 70%,var(--g3))}
+body{background:var(--bg)}
+.aurora{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.aurora i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:drift 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:540px;height:540px;background:var(--g1);top:-170px;right:-90px}
+.aurora i:nth-child(2){width:460px;height:460px;background:var(--g3);top:40%;left:-190px;opacity:.26;animation-delay:-8s}
+.aurora i:nth-child(3){width:420px;height:420px;background:var(--g4);bottom:-170px;right:12%;opacity:.2;animation-delay:-15s}
+.aurora::after{content:"";position:absolute;inset:0;opacity:.3;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 15%,#000,transparent 75%);mask-image:radial-gradient(ellipse 70% 55% at 50% 15%,#000,transparent 75%)}
+@keyframes drift{to{transform:translate(70px,44px) scale(1.14)}}
+nav{background:rgba(10,14,28,.6)}
+h1{background:linear-gradient(100deg,#fff 0%,#c7d2fe 45%,#f0abfc 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.btn.main{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 10px 30px -8px rgba(168,85,247,.65)}
+.btn.main:hover{box-shadow:0 14px 38px -6px rgba(236,72,153,.55)}
+.btn:not(.main){background:rgba(255,255,255,.04)}
+.btn:not(.main):hover{border-color:var(--g2)}
+.dot{animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(95,211,154,.6)}70%,100%{box-shadow:0 0 0 9px rgba(95,211,154,0)}}
+.api{position:relative;border:1px solid transparent;
+  background:linear-gradient(var(--panel),var(--panel)) padding-box,linear-gradient(135deg,var(--g4),var(--g1) 35%,var(--g2) 65%,var(--g3)) border-box;
+  box-shadow:0 0 90px -22px rgba(139,92,246,.6),0 30px 60px -30px #000}
+.api::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:radial-gradient(280px circle at var(--mx,75%) var(--my,0%),rgba(168,130,255,.17),transparent 60%)}
+.bar::before{content:"";width:10px;height:10px;border-radius:50%;background:#ff5f57;box-shadow:16px 0 0 #febc2e,32px 0 0 #28c840;margin-right:36px}
+section{border-top:0;position:relative}
+section::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+h2::after{content:"";display:block;width:56px;height:4px;border-radius:4px;background:var(--grad);margin-top:12px}
+.stats{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;padding:26px 0}
+.stats div:first-child{padding-left:26px}
+.stats div{padding-left:26px;padding-right:26px}
+.stats dt{display:inline-block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.proj{position:relative;padding:26px 22px;margin:0 -22px;border-bottom:0;border-radius:16px;box-shadow:0 1px 0 var(--line);transition:background .3s}
+.proj:first-of-type{padding-top:26px}
+.proj::before{content:"";position:absolute;left:0;top:20px;bottom:20px;width:3px;border-radius:3px;background:var(--grad);opacity:0;transition:opacity .3s}
+.proj:hover{background:linear-gradient(90deg,rgba(99,102,241,.14),rgba(236,72,153,.05) 60%,transparent)}
+.proj:hover::before{opacity:1}
+.proj .go:hover{background:var(--grad);color:#fff;border-color:transparent}
+.tl{border-left-color:transparent;position:relative}
+.tl::before{content:"";position:absolute;left:-2px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--g4),var(--g2),transparent)}
+.tl li::before{background:var(--grad);border:0;box-shadow:0 0 16px rgba(168,85,247,.8)}
+.skills>div{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;padding:22px;transition:border-color .3s,box-shadow .3s}
+.skills>div:hover{border-color:rgba(168,85,247,.55);box-shadow:0 0 44px -14px rgba(168,85,247,.65)}
+.skills h3{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+#contact{margin-bottom:48px;padding:56px 40px;border:1px solid transparent;border-radius:26px;
+  background:linear-gradient(135deg,rgba(99,102,241,.24),rgba(236,72,153,.15) 60%,rgba(34,211,238,.1)) padding-box,linear-gradient(135deg,var(--g4),var(--g2),var(--g3)) border-box}
+#contact::before{display:none}
+.contact a.big{text-decoration-color:rgba(255,255,255,.3)}
+footer{border-top:0}
+@media(prefers-reduced-motion:reduce){.aurora i,.dot{animation:none}}
+@media(max-width:860px){
+  #contact{padding:36px 24px}
+  .stats{padding:22px 0}
+  .hero{grid-template-columns:1fr;padding:56px 0 48px}
+  .stats{grid-template-columns:1fr 1fr;gap:24px 0}.stats div:nth-child(3){border-left:0;padding-left:0}
+  .skills{grid-template-columns:1fr}
+  .proj{grid-template-columns:1fr}.proj .go{grid-column:1;grid-row:auto;justify-self:start;margin-top:8px}
+  nav ul{gap:14px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .ln{opacity:1;transform:none;transition:none}.btn:hover{transform:none}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<nav><div class="wrap">
+  <b>Shiwali Saraswat</b>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div></nav>
+
+<main class="wrap">
+  <header class="hero">
+    <div>
+      <p class="status"><span class="dot"></span>Open to Laravel and Tech Lead roles</p>
+      <h1>I build backends that hold up in production.</h1>
+      <p class="lead">Backend engineer with 6+ years of PHP and Laravel: payment integrations, role-based APIs and slow queries made fast. Now adding React to the toolkit.</p>
+      <div class="cta">
+        <a class="btn main" href="#work">See my work</a>
+        <a class="btn" href="https://github.com/shiwali-saraswat-dev">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/shiwali-saraswat-dev/">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="api" aria-label="Profile shown as an API response">
+      <div class="bar"><span class="get">GET</span><span>/api/v1/engineers/shiwali-saraswat</span></div>
+<pre id="resp"><span class="ln hd">HTTP/1.1 <span class="ok">200 OK</span></span><span class="ln hd">X-Request-Id: <span id="rid">7f3a9c21</span></span><span class="ln">{</span><span class="ln">  <span class="k">"name"</span>: <span class="s">"Shiwali Saraswat"</span>,</span><span class="ln">  <span class="k">"role"</span>: <span class="s">"Backend Engineer"</span>,</span><span class="ln">  <span class="k">"stack"</span>: [<span class="s">"PHP"</span>, <span class="s">"Laravel"</span>, <span class="s">"MySQL"</span>],</span><span class="ln">  <span class="k">"years_experience"</span>: <span class="n">6</span>,</span><span class="ln">  <span class="k">"systems_shipped"</span>: <span class="n">15</span>,</span><span class="ln">  <span class="k">"learning"</span>: <span class="s">"React"</span>,</span><span class="ln">  <span class="k">"open_to_work"</span>: <span class="n">true</span>,</span><span class="ln">  <span class="k">"_links"</span>: {</span><span class="ln">    <span class="k">"projects"</span>: <a href="#work">"#work"</a>,</span><span class="ln">    <span class="k">"github"</span>: <a href="https://github.com/shiwali-saraswat-dev">"shiwali-saraswat-dev"</a>,</span><span class="ln">    <span class="k">"contact"</span>: <a href="#contact">"#contact"</a></span><span class="ln">  }</span><span class="ln">}</span></pre>
+    </div>
+  </header>
+
+  <section id="impact" aria-label="Impact">
+    <dl class="stats">
+      <div><dt>15+</dt><dd>production systems delivered as sole backend developer</dd></div>
+      <div><dt>90s → 13s</dt><dd>a critical SQL query, optimised</dd></div>
+      <div><dt>6h → 20min</dt><dd>a manual workflow, automated</dd></div>
+      <div><dt>10M+</dt><dd>records in an import pipeline</dd></div>
+    </dl>
+  </section>
+
+  <section id="work">
+    <h2>Selected work</h2>
+
+    <article class="proj">
+      <h3>Library Management API<span class="chip live">in progress</span></h3>
+      <a class="go" href="https://github.com/shiwali-saraswat-dev/library-management-api">View code</a>
+      <p>Laravel 12 REST API for a library's catalog, members and borrowing. Sanctum auth, a four-tier role hierarchy, cursor pagination, OpenAPI docs, Pest tests, Larastan and CI on every push. Borrow and return with concurrency-safe transactions is next.</p>
+      <span class="stack">Laravel 12 · MySQL · Pest · OpenAPI · GitHub Actions</span>
+    </article>
+
+    <article class="proj">
+      <h3>Unified Hotel ERP</h3>
+      <a class="go" href="https://github.com/shiwali-saraswat-dev/Unified-Hotel-ERP">View code</a>
+      <p>Room booking, restaurant POS and banquet management in one admin suite, with role-based access. Migrated from Laravel 8 to Laravel 12.</p>
+      <span class="stack">Laravel 12 · Blade · MySQL · Tailwind CSS</span>
+    </article>
+
+    <article class="proj">
+      <h3>Food Delivery App<span class="chip">learning project</span></h3>
+      <a class="go" href="https://github.com/shiwali-saraswat-dev/food-delivery-app-react">View code</a>
+      <p>A React food-ordering UI built component by component, with every change shipped through its own branch and pull request.</p>
+      <span class="stack">React · Parcel · JavaScript</span>
+    </article>
+
+    <article class="proj">
+      <h3>React From Scratch<span class="chip">learning log</span></h3>
+      <a class="go" href="https://github.com/shiwali-saraswat-dev/react-from-scratch">View code</a>
+      <p>A self-paced React course in code, built as numbered folders: plain HTML and vanilla JS, then JSX, components, props patterns, hooks, data fetching with loading states, and React Router.</p>
+      <span class="stack">React · Vite · React Router · JavaScript</span>
+    </article>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <ul class="tl">
+      <li><b>Software Engineer, Orange Business Services</b><span>Gurugram · Dec 2022 to Dec 2025 · via TeamLease</span>
+        <p>Backend development in Laravel: API design, payment and authentication integrations, query optimisation and version upgrades.</p></li>
+      <li><b>Backend Developer, Brain Technosys</b><span>Noida · Jul 2019 to Dec 2022</span>
+        <p>Delivered production systems end to end as the sole backend developer, including a multivendor marketplace and a Lumen-based microservices platform.</p></li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><h3>Backend</h3><p>PHP, Laravel, Lumen, REST API design, MySQL, query optimisation</p></div>
+      <div><h3>Security and payments</h3><p>OAuth2, Passport, Sanctum, JWT, Stripe, Braintree, PayPal</p></div>
+      <div><h3>Quality and frontend</h3><p>Pest, PHPUnit, Larastan, OpenAPI, Git, JavaScript, React (learning)</p></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Let's talk</h2>
+    <p style="color:var(--muted);margin:0 0 18px">Hiring for a Laravel or Tech Lead role in Noida, Delhi or Gurgaon, or remote? Write to me.</p>
+    <a class="big" href="mailto:saraswatshiwali@gmail.com">saraswatshiwali@gmail.com</a>
+  </section>
+</main>
+
+<footer><div class="wrap">© 2026 Shiwali Saraswat</div></footer>
+
+<script>
+(function(){
+  var rid=document.getElementById('rid');
+  if(rid){rid.textContent=Math.random().toString(16).slice(2,10)}
+  var api=document.querySelector('.api');
+  api.addEventListener('pointermove',function(e){
+    var r=api.getBoundingClientRect();
+    api.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    api.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+  var lines=document.querySelectorAll('#resp .ln'),i=0;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    lines.forEach(function(l){l.classList.add('on')});return;
+  }
+  (function next(){
+    if(i>=lines.length)return;
+    lines[i++].classList.add('on');
+    setTimeout(next,i<3?260:110);
+  })();
+})();
+</script>
+</body>
+</html>
