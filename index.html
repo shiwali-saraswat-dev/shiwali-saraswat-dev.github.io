@@ -3,9 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shiwali Saraswat | Backend Engineer (PHP / Laravel)</title>
-<meta name="description" content="Backend engineer with 6+ years building production Laravel systems, payment integrations and APIs.">
-<meta name="theme-color" content="#0d1220">
+<title>Shiwali Saraswat | Full Stack Developer (PHP / Laravel / React)</title>
+<meta name="description" content="Full stack developer with 6+ years building production Laravel systems, REST APIs and React dashboards.">
+<meta name="theme-color" content="#0a0e1c">
+<meta property="og:title" content="Shiwali Saraswat | Full Stack Developer">
+<meta property="og:description" content="PHP, Laravel, REST APIs and React. 6+ years building production systems.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,6 +90,7 @@ h2{font-size:1.9rem;letter-spacing:-.02em;margin:0 0 32px;font-weight:800}
 .contact a.big:hover{text-decoration-color:var(--accent)}
 footer{padding:28px 0 48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
 
+.note{color:var(--muted);font-size:.95rem;margin:0 0 20px}
 /* ---- gradient layer ---- */
 :root{--bg:#0a0e1c;--panel:#10162a;--g1:#6366f1;--g2:#a855f7;--g3:#ec4899;--g4:#22d3ee;
   --grad:linear-gradient(120deg,var(--g4),var(--g1) 40%,var(--g2) 70%,var(--g3))}
@@ -138,6 +143,38 @@ h2::after{content:"";display:block;width:56px;height:4px;border-radius:4px;backg
 .contact a.big{text-decoration-color:rgba(255,255,255,.3)}
 footer{border-top:0}
 @media(prefers-reduced-motion:reduce){.aurora i,.dot{animation:none}}
+/* ---- v3: cards, motion, details ---- */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:20}
+.progress b{display:block;height:100%;width:0;background:var(--grad)}
+h1{background-size:200% 100%;animation:shine 8s ease-in-out infinite alternate}
+@keyframes shine{to{background-position:100% 0}}
+.avatar{position:relative;width:84px;height:84px;border-radius:50%;margin-bottom:22px;background:var(--grad);box-shadow:0 0 44px -6px rgba(168,85,247,.6)}
+.avatar span,.avatar img{position:absolute;inset:3px;width:78px;height:78px;border-radius:50%}
+.avatar span{display:grid;place-items:center;background:var(--panel);font-weight:800;font-size:1.6rem;letter-spacing:-.02em}
+.avatar img{object-fit:cover;z-index:1}
+.marquee{overflow:hidden;border-block:1px solid var(--line);margin:0 -24px 8px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;width:max-content;padding:16px 0;animation:scroll 40s linear infinite}
+.track span{margin-right:12px;font-family:var(--mono);font-size:.85rem;padding:6px 16px;border:1px solid var(--line);border-radius:99px;color:var(--muted);background:rgba(255,255,255,.03);white-space:nowrap}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+#work,#projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+#work>h2,#projects>h2{grid-column:1/-1;margin-bottom:12px}
+#work>.proj,#projects>.proj{display:flex;flex-direction:column;gap:12px;margin:0;padding:26px;border:1px solid var(--line);background:rgba(255,255,255,.03);box-shadow:none;overflow:hidden;transition:transform .3s,border-color .3s,background .3s}
+.proj h3{order:0}.proj p{order:1;flex:1}.proj .stack{order:2}.proj .go{order:3;align-self:flex-start;margin-top:4px}
+.proj::before{left:0;right:0;top:0;bottom:auto;width:auto;height:3px;border-radius:0}
+.proj::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(340px circle at var(--cx,50%) var(--cy,0%),rgba(168,130,255,.18),transparent 60%)}
+.proj:hover::after{opacity:1}
+.proj:hover{border-color:rgba(168,85,247,.5);transform:translateY(-4px)}
+.js .rv{opacity:0}
+.js .rv.in{opacity:1;animation:rise .7s cubic-bezier(.2,.7,.2,1) backwards}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+button.btn{font:inherit;font-weight:600;cursor:pointer}
+.contact .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot a{text-decoration:none}
+@media(max-width:860px){#work,#projects{grid-template-columns:1fr}.marquee{margin:0 -24px}}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1}.js .rv.in{animation:none}.track,h1{animation:none}}
+
 @media(max-width:860px){
   #contact{padding:36px 24px}
   .stats{padding:22px 0}
@@ -152,11 +189,13 @@ footer{border-top:0}
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
+<div class="progress" aria-hidden="true"><b></b></div>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <nav><div class="wrap">
   <b>Shiwali Saraswat</b>
   <ul>
     <li><a href="#work">Work</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -166,11 +205,13 @@ footer{border-top:0}
 <main class="wrap">
   <header class="hero">
     <div>
+      <div class="avatar"><span>SS</span><img src="photo.jpg" alt="Shiwali Saraswat" onerror="this.remove()"></div>
       <p class="status"><span class="dot"></span>Open to Laravel and Tech Lead roles</p>
       <h1>I build backends that hold up in production.</h1>
-      <p class="lead">Backend engineer with 6+ years of PHP and Laravel: payment integrations, role-based APIs and slow queries made fast. Now adding React to the toolkit.</p>
+      <p class="lead">Backend-led full stack developer: 6+ years of PHP and REST APIs, 3+ years of Laravel, 1 year of React. Payment integrations, role-based APIs and slow queries made fast.</p>
       <div class="cta">
         <a class="btn main" href="#work">See my work</a>
+        <a class="btn" href="Shiwali_Saraswat_6PlusYears_Resume.pdf" download>Resume</a>
         <a class="btn" href="https://github.com/shiwali-saraswat-dev">GitHub</a>
         <a class="btn" href="https://www.linkedin.com/in/shiwali-saraswat-dev/">LinkedIn</a>
       </div>
@@ -178,47 +219,93 @@ footer{border-top:0}
 
     <div class="api" aria-label="Profile shown as an API response">
       <div class="bar"><span class="get">GET</span><span>/api/v1/engineers/shiwali-saraswat</span></div>
-<pre id="resp"><span class="ln hd">HTTP/1.1 <span class="ok">200 OK</span></span><span class="ln hd">X-Request-Id: <span id="rid">7f3a9c21</span></span><span class="ln">{</span><span class="ln">  <span class="k">"name"</span>: <span class="s">"Shiwali Saraswat"</span>,</span><span class="ln">  <span class="k">"role"</span>: <span class="s">"Backend Engineer"</span>,</span><span class="ln">  <span class="k">"stack"</span>: [<span class="s">"PHP"</span>, <span class="s">"Laravel"</span>, <span class="s">"MySQL"</span>],</span><span class="ln">  <span class="k">"years_experience"</span>: <span class="n">6</span>,</span><span class="ln">  <span class="k">"systems_shipped"</span>: <span class="n">15</span>,</span><span class="ln">  <span class="k">"learning"</span>: <span class="s">"React"</span>,</span><span class="ln">  <span class="k">"open_to_work"</span>: <span class="n">true</span>,</span><span class="ln">  <span class="k">"_links"</span>: {</span><span class="ln">    <span class="k">"projects"</span>: <a href="#work">"#work"</a>,</span><span class="ln">    <span class="k">"github"</span>: <a href="https://github.com/shiwali-saraswat-dev">"shiwali-saraswat-dev"</a>,</span><span class="ln">    <span class="k">"contact"</span>: <a href="#contact">"#contact"</a></span><span class="ln">  }</span><span class="ln">}</span></pre>
+<pre id="resp"><span class="ln hd">HTTP/1.1 <span class="ok">200 OK</span></span><span class="ln hd">X-Request-Id: <span id="rid">7f3a9c21</span></span><span class="ln">{</span><span class="ln">  <span class="k">"name"</span>: <span class="s">"Shiwali Saraswat"</span>,</span><span class="ln">  <span class="k">"role"</span>: <span class="s">"Full Stack Developer"</span>,</span><span class="ln">  <span class="k">"stack"</span>: [</span><span class="ln">    <span class="s">"PHP"</span>, <span class="s">"Laravel"</span>, <span class="s">"MySQL"</span>,</span><span class="ln">    <span class="s">"REST API"</span>, <span class="s">"PHPUnit"</span>, <span class="s">"React"</span></span><span class="ln">  ],</span><span class="ln">  <span class="k">"years_experience"</span>: <span class="n">6</span>,</span><span class="ln">  <span class="k">"systems_shipped"</span>: <span class="n">15</span>,</span><span class="ln">  <span class="k">"open_to_work"</span>: <span class="n">true</span>,</span><span class="ln">  <span class="k">"_links"</span>: {</span><span class="ln">    <span class="k">"projects"</span>: <a href="#work">"#work"</a>,</span><span class="ln">    <span class="k">"github"</span>: <a href="https://github.com/shiwali-saraswat-dev">"shiwali-saraswat-dev"</a>,</span><span class="ln">    <span class="k">"contact"</span>: <a href="#contact">"#contact"</a></span><span class="ln">  }</span><span class="ln">}</span></pre>
     </div>
   </header>
 
+  <div class="marquee" aria-hidden="true"><div class="track"><span>PHP</span><span>Laravel</span><span>MySQL</span><span>REST APIs</span><span>PHPUnit</span><span>Pest</span><span>React</span><span>JavaScript</span><span>Redis</span><span>OAuth2 / JWT</span><span>Stripe</span><span>OpenAPI</span><span>Lumen</span><span>Tailwind CSS</span><span>Git</span><span>PHP</span><span>Laravel</span><span>MySQL</span><span>REST APIs</span><span>PHPUnit</span><span>Pest</span><span>React</span><span>JavaScript</span><span>Redis</span><span>OAuth2 / JWT</span><span>Stripe</span><span>OpenAPI</span><span>Lumen</span><span>Tailwind CSS</span><span>Git</span></div></div>
+
   <section id="impact" aria-label="Impact">
+    <p class="note">Results from my professional work on employer and client projects.</p>
     <dl class="stats">
-      <div><dt>15+</dt><dd>production systems delivered as sole backend developer</dd></div>
-      <div><dt>90s → 13s</dt><dd>a critical SQL query, optimised</dd></div>
-      <div><dt>6h → 20min</dt><dd>a manual workflow, automated</dd></div>
-      <div><dt>10M+</dt><dd>records in an import pipeline</dd></div>
+      <div><dt>15+</dt><dd>production systems delivered across ERP, healthcare, e-commerce and marketplaces</dd></div>
+      <div><dt>90s → 13s</dt><dd>dashboard queries, 85% faster after SQL optimisation and indexing</dd></div>
+      <div><dt>6h → 20min</dt><dd>daily network conflict detection, automated with Core PHP</dd></div>
+      <div><dt>10M+</dt><dd>product records imported with zero memory overflow</dd></div>
     </dl>
   </section>
 
   <section id="work">
-    <h2>Selected work</h2>
+    <h2>Professional work</h2>
+
+    <article class="proj">
+      <h3>EOS Medchem<span class="chip live">live site</span></h3>
+      <a class="go" href="https://www.eosmedchem.com/">Visit site</a>
+      <p>An import pipeline for 10M+ product records that kept the production store stable, with zero memory overflow.</p>
+      <span class="stack">OpenCart · PHP · MySQL</span>
+    </article>
+
+    <article class="proj">
+      <h3>Luxury Car Market<span class="chip live">live site</span></h3>
+      <a class="go" href="https://luxurycarmarket.ae/">Visit site</a>
+      <p>Database design plus listings, wishlist, CMS and sales modules for a multilingual (English and Arabic) vehicle marketplace.</p>
+      <span class="stack">Laravel · MySQL · Multilingual</span>
+    </article>
+
+    <article class="proj">
+      <h3>Vancouver Island Music Academy<span class="chip live">live site</span></h3>
+      <a class="go" href="https://www.vimamusic.ca/">Visit site</a>
+      <p>The complete administration platform, built with Laravel migrations, seeders, factories and custom CMS modules.</p>
+      <span class="stack">Laravel · MySQL · CMS</span>
+    </article>
+
+    <article class="proj">
+      <h3>Grown Market</h3>
+      <p>A multi-vendor marketplace delivered independently in 8 months, with auctions and bidding, Stripe payments, QuickBlox real-time chat and an admin suite.</p>
+      <span class="stack">Laravel · Stripe · QuickBlox</span>
+    </article>
+
+    <article class="proj">
+      <h3>Nilirock microservices</h3>
+      <p>A Lumen platform with OAuth2, OTP verification, social login, Firebase push notifications, Stripe and athlete-brand matching.</p>
+      <span class="stack">Lumen · OAuth2 · Firebase · Stripe</span>
+    </article>
+
+    <article class="proj">
+      <h3>Teliox healthcare platform</h3>
+      <p>Upgraded from Laravel 5.x to 8.x with zero downtime, with IoT healthcare APIs and patient vitals visualisation.</p>
+      <span class="stack">Laravel 8 · MySQL · REST APIs</span>
+    </article>
+  </section>
+
+  <section id="projects">
+    <h2>Personal projects</h2>
 
     <article class="proj">
       <h3>Library Management API<span class="chip live">in progress</span></h3>
       <a class="go" href="https://github.com/shiwali-saraswat-dev/library-management-api">View code</a>
       <p>Laravel 12 REST API for a library's catalog, members and borrowing. Sanctum auth, a four-tier role hierarchy, cursor pagination, OpenAPI docs, Pest tests, Larastan and CI on every push. Borrow and return with concurrency-safe transactions is next.</p>
-      <span class="stack">Laravel 12 · MySQL · Pest · OpenAPI · GitHub Actions</span>
+      <span class="stack">Laravel 12 · MySQL · Redis · Pest · OpenAPI · GitHub Actions</span>
     </article>
 
     <article class="proj">
-      <h3>Unified Hotel ERP</h3>
+      <h3>Unified Hotel ERP<span class="chip live">in progress</span></h3>
       <a class="go" href="https://github.com/shiwali-saraswat-dev/Unified-Hotel-ERP">View code</a>
       <p>Room booking, restaurant POS and banquet management in one admin suite, with role-based access. Migrated from Laravel 8 to Laravel 12.</p>
       <span class="stack">Laravel 12 · Blade · MySQL · Tailwind CSS</span>
     </article>
 
     <article class="proj">
-      <h3>Food Delivery App<span class="chip">learning project</span></h3>
+      <h3>Food Delivery App<span class="chip live">in progress</span></h3>
       <a class="go" href="https://github.com/shiwali-saraswat-dev/food-delivery-app-react">View code</a>
       <p>A React food-ordering UI built component by component, with every change shipped through its own branch and pull request.</p>
       <span class="stack">React · Parcel · JavaScript</span>
     </article>
 
     <article class="proj">
-      <h3>React From Scratch<span class="chip">learning log</span></h3>
+      <h3>React From Scratch<span class="chip live">in progress</span></h3>
       <a class="go" href="https://github.com/shiwali-saraswat-dev/react-from-scratch">View code</a>
-      <p>A self-paced React course in code, built as numbered folders: plain HTML and vanilla JS, then JSX, components, props patterns, hooks, data fetching with loading states, and React Router.</p>
+      <p>A React reference built as numbered folders: plain HTML and vanilla JS, then JSX, components, props patterns, hooks, data fetching with loading states, and React Router.</p>
       <span class="stack">React · Vite · React Router · JavaScript</span>
     </article>
   </section>
@@ -227,29 +314,34 @@ footer{border-top:0}
     <h2>Experience</h2>
     <ul class="tl">
       <li><b>Software Engineer, Orange Business Services</b><span>Gurugram · Dec 2022 to Dec 2025 · via TeamLease</span>
-        <p>Backend development in Laravel: API design, payment and authentication integrations, query optimisation and version upgrades.</p></li>
+        <p>PHP applications, REST APIs and React.js dashboards for network operations: Router, Ansible and Python API integrations, CRON-based message-queue processing, PHPUnit testing, code reviews, team guidance and the PHP 7.4 to 8 migration across multiple projects.</p></li>
       <li><b>Backend Developer, Brain Technosys</b><span>Noida · Jul 2019 to Dec 2022</span>
-        <p>Delivered production systems end to end as the sole backend developer, including a multivendor marketplace and a Lumen-based microservices platform.</p></li>
+        <p>ERP, e-commerce, marketplace and healthcare systems in Laravel, Lumen and OpenCart: database design, authentication, payment gateways and third-party APIs. Mentored junior developers and handled client communication, planning and milestone reviews.</p></li>
     </ul>
   </section>
 
   <section id="skills">
     <h2>Skills</h2>
     <div class="skills">
-      <div><h3>Backend</h3><p>PHP, Laravel, Lumen, REST API design, MySQL, query optimisation</p></div>
-      <div><h3>Security and payments</h3><p>OAuth2, Passport, Sanctum, JWT, Stripe, Braintree, PayPal</p></div>
-      <div><h3>Quality and frontend</h3><p>Pest, PHPUnit, Larastan, OpenAPI, Git, JavaScript, React (learning)</p></div>
+      <div><h3>Backend</h3><p>PHP, Laravel, Lumen, CodeIgniter, OpenCart, Eloquent ORM</p></div>
+      <div><h3>APIs and integrations</h3><p>REST APIs, JSON, OAuth2, JWT, Sanctum, OpenAPI/Swagger, Stripe, Braintree, PayPal, Postman, Bruno</p></div>
+      <div><h3>Database</h3><p>MySQL, PDO, schema design, query optimisation and indexing, migrations</p></div>
+      <div><h3>Frontend</h3><p>React.js (1 year), JavaScript ES6+, JSX, Vite, Parcel, HTML5, CSS3, Tailwind CSS, Bootstrap, jQuery, AJAX</p></div>
+      <div><h3>Testing and quality</h3><p>PHPUnit, Pest, Larastan, code reviews, GitHub Actions</p></div>
+      <div><h3>Architecture and tools</h3><p>MVC, SOLID, dependency injection, repository and service patterns, microservices, Git, Composer, Jira</p></div>
     </div>
+    <p class="note" style="margin:28px 0 0">Certifications: <a href="https://namastedev.com/shiwalisaraswat/certificates/namaste-javascript">Namaste JavaScript</a> and <a href="https://namastedev.com/shiwalisaraswat/certificates/namaste-react">Namaste React</a>. Education: B.Tech in Computer Science, ITM Aligarh (AKTU), 2018.</p>
   </section>
 
   <section id="contact" class="contact">
     <h2>Let's talk</h2>
     <p style="color:var(--muted);margin:0 0 18px">Hiring for a Laravel or Tech Lead role in Noida, Delhi or Gurgaon, or remote? Write to me.</p>
-    <a class="big" href="mailto:saraswatshiwali@gmail.com">saraswatshiwali@gmail.com</a>
+    <a class="big" href="mailto:shiwalisaraswat@gmail.com">shiwalisaraswat@gmail.com</a>
+    <div class="row"><button class="btn main" id="copy" type="button">Copy email</button><a class="btn" href="Shiwali_Saraswat_6PlusYears_Resume.pdf" download>Download resume</a><a class="btn" href="https://www.linkedin.com/in/shiwali-saraswat-dev/">LinkedIn</a></div>
   </section>
 </main>
 
-<footer><div class="wrap">© 2026 Shiwali Saraswat</div></footer>
+<footer><div class="wrap foot"><span>© 2026 Shiwali Saraswat · Built with HTML, CSS and JavaScript</span><a href="#">Back to top ↑</a></div></footer>
 
 <script>
 (function(){
@@ -270,6 +362,25 @@ footer{border-top:0}
     lines[i++].classList.add('on');
     setTimeout(next,i<3?260:110);
   })();
+})();
+</script>
+<script>
+(function(){
+  var bar=document.querySelector('.progress b');
+  function prog(){var h=document.documentElement;bar.style.width=(h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)*100)+'%'}
+  addEventListener('scroll',prog,{passive:true});prog();
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('section>h2,.stats,.proj,.tl li,.skills>div,.contact .big').forEach(function(el,i){
+    el.classList.add('rv');el.style.animationDelay=(i%3*90)+'ms';io.observe(el);
+  });
+  document.querySelectorAll('.proj').forEach(function(c){
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--cx',(e.clientX-r.left)+'px');c.style.setProperty('--cy',(e.clientY-r.top)+'px')});
+  });
+  var cp=document.getElementById('copy'),mail='shiwalisaraswat@gmail.com';
+  cp.addEventListener('click',function(){
+    var ok=function(){cp.textContent='Copied ✓';setTimeout(function(){cp.textContent='Copy email'},2000)};
+    if(navigator.clipboard){navigator.clipboard.writeText(mail).then(ok,function(){location.href='mailto:'+mail})}else{location.href='mailto:'+mail}
+  });
 })();
 </script>
 </body>
